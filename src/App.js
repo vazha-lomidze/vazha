@@ -15,21 +15,31 @@ class App extends React.Component {
     })
   }
 
-  
+
   render() {
     return (
       <div>
         <div>
           <label>Username</label>
           <Input
-          name="username"
+            name="username"
             value={this.state.username}
-            onChange={e => this.handlefieldChange(e)} />
+            onChange={event => this.handlefieldChange(event)}
+            inputValidations={[
+              {
+                name: 'minLengthError',
+                params: {
+                  minLength: 3,
+                  message: 'please write minimum 3 letter'
+                }
+
+              }
+            ]} />
         </div>
         <div>
           <label>Password</label>
           <Input
-          name="password"
+            name="password"
             value={this.state.password}
             type="password"
             onChange={event => this.handlefieldChange(event)}
