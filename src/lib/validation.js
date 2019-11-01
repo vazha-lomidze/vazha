@@ -1,4 +1,4 @@
-function minLengthEror(value, params) {
+function minLengthError(value, params) {
     const {
         minLength = 8,
         message = 'error in lenght validation'
@@ -13,6 +13,6 @@ function minLengthEror(value, params) {
 
 }
 export {
-    minLengthEror
+    minLengthError
 
 }

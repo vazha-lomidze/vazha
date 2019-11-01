@@ -34,6 +34,11 @@ class App extends React.Component {
                 }
 
               }
+            ]}
+            formatterValidations={[
+              {
+                name:'onlyNumber'
+              }
             ]} />
         </div>
         <div>

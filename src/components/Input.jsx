@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Validations from '../lib/validation';
-
+import * as Formaters from '../lib/formater';
 class Input extends React.Component {
     state = {
         errors: []
@@ -8,10 +8,12 @@ class Input extends React.Component {
     handleChange(event) {
         const {
             onChange,
-            inputValidations= []
+            inputValidations= [],
+            formatterValidations = []
         } = this.props;
-        let tempErrors = []
-        if (tempErrors.length) {
+        let tempErrors = [];
+        let formatterError = false;
+        
 
 
             if (inputValidations.length) {
@@ -25,6 +27,20 @@ class Input extends React.Component {
 
                 });
             }
+            if (formatterValidations.length) {
+                formatterValidations.forEach(item => {
+                    let error = Formaters[item.name](event.target.value);
+                    console.log(error)
+                    if(error){
+                        formatterError=true;
+                    }
+                });
+            }
+            if (formatterError){
+                return false;
+            }
+
+
             if (tempErrors.length) {
                 this.setState({
 
@@ -36,7 +52,7 @@ class Input extends React.Component {
                     errors: []
                 })
             }
-        }
+        
 
         onChange(event);
     }
